@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wee Tien Guan Project Week 1</title>
+    <link rel="stylesheet" href="./src/index.css" />
+    <script defer src="./src/index.js"></script>
+
+    <h1 id="header1">Stocks Commission and Profit/Loss Calculator</h1>
+    <h2 id="header2">Singapore Market Online trades</h2>
+  </head>
+
+  <body>
+    <div class="firstGrid">
+      <div class="brokers">
+        <p>Please Select an Option</p>
+        <form class="radioBtn">
+          <input
+            type="radio"
+            id="DBSCashUpFront"
+            name="brokerTypes"
+            value="DBSCashUpFront"
+          />
+          <label for="DBSCashUpFront">DBS Cash Upfront<br /><br /></label>
+          <input type="radio" id="DBSCash" name="brokerTypes" value="DBSCash" />
+          <label for="DBSCash">DBS Cash<br /><br /></label>
+          <input
+            type="radio"
+            id="DBSShareFinance"
+            name="brokerTypes"
+            value="DBSShareFinance"
+          />
+          <label for="DBSShareFinance">DBS Share Financing<br /><br /></label>
+          <input
+            type="radio"
+            id="PhillipCash"
+            name="brokerTypes"
+            value="PhillipCash"
+          />
+          <label for="PhillipCash">Phillip Cash<br /><br /></label>
+          <input
+            type="radio"
+            id="userEnterType"
+            name="brokerTypes"
+            value="userEnterType"
+          />
+          <label for="userEnterType">User Entered rate</label>
+          <input
+            type="text"
+            id="userEnterRate"
+            name="userEnterRate"
+            min="0"
+            size="4"
+            placeholder="0.28"
+            value="0.0028"
+          />
+          <label id="userEnterRateLabel" for="userEnterRate">%</label>
+        </form>
+      </div>
+
+      <div class="buyComm">Buy Comm</div>
+
+      <div class="sellComm">Sell Comm</div>
+
+      <div class="profitLoss">Profit/Loss</div>
+
+      <div class="DBSFinance">
+        DBS Share Financing <br />
+        (part 2)
+      </div>
+    </div>
+  </body>
+</html>
