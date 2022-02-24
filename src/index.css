@@ -46,6 +46,7 @@
 #userEnterRateLabel {
   position: relative;
   left: 25px;
+  color: black;
 }
 .buyComm {
   font-weight: bold;

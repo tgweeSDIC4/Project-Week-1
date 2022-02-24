@@ -7,6 +7,7 @@
     <title>Wee Tien Guan Project Week 1</title>
     <link rel="stylesheet" href="./src/index.css" />
     <script defer src="./src/index.js"></script>
+    <link rel="icon" href="data:">
 
     <h1 id="header1">Stocks Commission and Profit/Loss Calculator</h1>
     <h2 id="header2">Singapore Market Online trades</h2>
@@ -48,16 +49,9 @@
             value="userEnterType"
           />
           <label for="userEnterType">User Entered rate</label>
-          <input
-            type="text"
-            id="userEnterRate"
-            name="userEnterRate"
-            min="0"
-            size="4"
-            placeholder="0.28"
-          />
-          <label id="userEnterRateLabel" for="userEnterRate">%</label>
         </form>
+        <input type="text" id="userEnterRate" size="4"/>
+        <span id="userEnterRateLabel">%</span>
       </div>
 
       <div class="buyComm">
