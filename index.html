@@ -15,7 +15,7 @@
   <body>
     <div class="firstGrid">
       <div class="brokers">
-        <p>Step 1: <br />Please Select an option</p>
+        <p><br />Step 1: <br />Please Select an option</p>
         <form class="radioBtn">
           <input
             type="radio"
@@ -60,11 +60,76 @@
         </form>
       </div>
 
-      <div class="buyComm">Buy Comm</div>
+      <div class="buyComm">
+        <span>Buy Comm</span>
+        <br><br>
+        <span> Step 2: <span>
+        <span>Enter Price/Qty<span>
+        <br><br>
+        <form class="buyCommForm">
+          <label for="buyPrice">Price</label>
+          <input type="text" id="buyPrice" size="10" />
+          <br /><br />
+          <label for="buyQty">Quantity</label>
+          <input type="text" id="buyQty" size="10" />
+          <br /><br />
+          <label for="buyTotalComm">Total Comm</label>
+          <input type="text" id="buyTotalComm" size="10" readonly />
+          <br /><br />
+          <label for="buyTotal">Grand Total</label>
+          <input type="text" id="buyTotal" size="10" readonly />
+          <br /><br />
+          <label for="buyCommRate">Comm Rate %</label>
+          <input type="text" id="buyCommRate" size="10" readonly />
+          <br /><br />
+          <label for="buyBrokerComm">Broker Comm</label>
+          <input type="text" id="buyBrokerComm" size="10" readonly />
+          <br /><br />
+          <label for="buyCDPFee">CDP Fee</label>
+          <input type="text" id="buyCDPFee" size="10" readonly />
+          <br /><br />
+          <label for="buySGXFee">SGX Fee</label>
+          <input type="text" id="buySGXFee" size="10" readonly />
+          <br /><br />
+          <label for="buyGST">GST</label>
+          <input type="text" id="buyGST" size="10" readonly />
+        </form>
+      </div>
 
-      <div class="sellComm">Sell Comm</div>
+      <div class="sellComm">
+        <span>Sell Comm</span>
+        <br /><br />
+        <span>Step 3: Enter Price<span>
+        <br><br>
+        <form class="sellCommForm">
+          <input type="text" id="sellPrice" size="10" />
+          <br /><br />
+          <input type="text" id="sellQty" size="10" readonly />
+          <br /><br />
+          <input type="text" id="sellTotalComm" size="10" readonly />
+          <br /><br />
+          <input type="text" id="sellTotal" size="10" readonly />
+          <br /><br />
+          <input type="text" id="sellCommRate" size="10" readonly />
+          <br /><br />
+          <input type="text" id="sellBrokerComm" size="10" readonly />
+          <br /><br />
+          <input type="text" id="sellCDPFee" size="10" readonly />
+          <br /><br />
+          <input type="text" id="sellSGXFee" size="10" readonly />
+          <br /><br />
+          <input type="text" id="sellGST" size="10" readonly />
+        </form>
+      </div>
 
-      <div class="profitLoss">Profit/Loss</div>
+      <div class="profitLoss">
+        <span>Profit/Loss</span>
+        <br><br><br><br><br><br><br><br>
+        <input type="text" id="totalComm" size="10" readonly>
+        <br><br>
+        <input type="text" id="grandTotal" size="10" readonly>
+        
+      </div>
 
       <div class="DBSFinance">
         DBS Share Financing <br />
