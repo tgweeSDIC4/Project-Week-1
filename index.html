@@ -15,13 +15,14 @@
   <body>
     <div class="firstGrid">
       <div class="brokers">
-        <p>Please Select an Option</p>
+        <p>Step 1: <br />Please Select an option</p>
         <form class="radioBtn">
           <input
             type="radio"
             id="DBSCashUpFront"
             name="brokerTypes"
             value="DBSCashUpFront"
+            checked
           />
           <label for="DBSCashUpFront">DBS Cash Upfront<br /><br /></label>
           <input type="radio" id="DBSCash" name="brokerTypes" value="DBSCash" />
@@ -54,7 +55,6 @@
             min="0"
             size="4"
             placeholder="0.28"
-            value="0.0028"
           />
           <label id="userEnterRateLabel" for="userEnterRate">%</label>
         </form>
