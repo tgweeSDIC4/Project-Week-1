@@ -11,7 +11,7 @@
   display: grid;
   margin: auto;
   grid-template-columns: 200px 200px 150px 150px 200px;
-  grid-template-rows: 600px;
+  grid-template-rows: 450px 100px;
   text-align: center;
   justify-content: center;
   position: relative;
@@ -24,16 +24,29 @@
   font-weight: bold;
 }
 .buyComm {
-  grid-area: 1 / 2 / 1/ 3;
+  grid-area: 1 / 2 / 2/ 3;
+  font-weight: bold;
+  color: blue;
 }
 .sellComm {
-  grid-area: 1 / 3 / 1 / 4;
+  grid-area: 1 / 3 / 2 / 4;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
 }
 .profitLoss {
-  grid-area: 1 / 4 / 1 / 5;
+  grid-area: 1 / 4 / 2 / 5;
+  color: blue;
+  font-weight: bold;
 }
 .DBSFinance {
-  grid-area: 1 / 5 / 1 / 6;
+  grid-area: 1 / 5 / 2 / 6;
+  color: blue;
+  font-weight: bold;
+}
+#roundingNote {
+  grid-area: 2 / 2 / 3 / 4;
+  color: crimson;
 }
 .radioBtn {
   color: black;
@@ -47,11 +60,6 @@
   position: relative;
   left: 25px;
   color: black;
-}
-.buyComm {
-  font-weight: bold;
-  color: blue;
-  text-align: right;
 }
 .buyCommForm {
   color: black;
@@ -78,11 +86,6 @@
 #buyGST {
   background-color: lightgray;
 }
-.sellComm {
-  font-weight: bold;
-  color: blue;
-  text-align: center;
-}
 #sellQty {
   background-color: lightgray;
 }
@@ -106,10 +109,6 @@
 }
 #sellGST {
   background-color: lightgray;
-}
-.profitLoss {
-  color: blue;
-  font-weight: bold;
 }
 #totalComm {
   background-color: lightgreen;

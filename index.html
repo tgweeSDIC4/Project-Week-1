@@ -23,7 +23,7 @@
             id="DBSCashUpFront"
             name="brokerTypes"
             value="DBSCashUpFront"
-            checked
+            
           />
           <label for="DBSCashUpFront">DBS Cash Upfront<br /><br /></label>
           <input type="radio" id="DBSCash" name="brokerTypes" value="DBSCash" />
@@ -40,6 +40,7 @@
             id="PhillipCash"
             name="brokerTypes"
             value="PhillipCash"
+            checked
           />
           <label for="PhillipCash">Phillip Cash<br /><br /></label>
           <input
@@ -70,7 +71,7 @@
           <label for="buyTotalComm">Total Comm</label>
           <input type="text" id="buyTotalComm" size="10" readonly />
           <br /><br />
-          <label for="buyTotal">Grand Total</label>
+          <label for="buyTotal">Gross Total</label>
           <input type="text" id="buyTotal" size="10" readonly />
           <br /><br />
           <label for="buyCommRate">Comm Rate %</label>
@@ -128,6 +129,11 @@
       <div class="DBSFinance">
         DBS Share Financing <br />
         (part 2)
+      </div>
+
+      <div id="roundingNote">
+        Note: Due to Rounding errors, there 
+        might be small differences with actual fees.
       </div>
     </div>
   </body>
