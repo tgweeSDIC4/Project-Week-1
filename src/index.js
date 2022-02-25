@@ -80,6 +80,10 @@ class objDBSLowerRate extends objBroker {
 
 class objUserRate extends objBroker {}
 
+// instantiate the broker classes
+stdBroker = new objBroker();
+lowerRateBroker = new objDBSLowerRate();
+
 updateDisplay = (objLabel, objData) => {
   document.getElementById(objLabel.totalComm).value =
     objData.totalComm.toFixed(2);
@@ -100,19 +104,64 @@ updateDisplay = (objLabel, objData) => {
   document.getElementById(objLabel.GSTFee).value = objData.GSTFee.toFixed(2);
 };
 
+calculateAll = (type) => {
+  checkDBSCashUpFront = document.getElementById("DBSCashUpFront").checked;
+  checkDBSShareFinance = document.getElementById("DBSShareFinance").checked;
+
+  switch (type) {
+    case "buy": {
+      price = document.getElementById("buyPrice").value;
+      qty = document.getElementById("buyQty").value;
+      if (checkDBSCashUpFront == true || checkDBSShareFinance == true) {
+        priceCommData = lowerRateBroker.calculateComm(price, qty);
+      } else {
+        priceCommData = stdBroker.calculateComm(price, qty);
+      }
+      updateDisplay(buyDisplayLabel, priceCommData);
+      break;
+    }
+    case "sell": {
+      price = document.getElementById("sellPrice").value;
+      qty = document.getElementById("sellQty").value;
+      if (checkDBSShareFinance == true) {
+        priceCommData = lowerRateBroker.calculateComm(price, qty);
+      } else {
+        priceCommData = stdBroker.calculateComm(price, qty);
+      }
+      updateDisplay(sellDisplayLabel, priceCommData);
+      break;
+    }
+  }
+};
+
 // Event listener to check for radio buttons and input
 // using event bubbling aka eventlistener is attached to document not individual buttons
 document.addEventListener("change", (event) => {
-  //  console.log(event.target.value);
-  if (event.target.id == "buyQty") {
+  // console.log(event.target.id);
+  // console.log(event.target.type);
+  checkBuyPrice = document.getElementById("buyPrice").value;
+  checkBuyQty = document.getElementById("buyQty").value;
+  checkSellPrice = document.getElementById("sellPrice").value;
+
+  if (event.target.id == "buyQty" && checkBuyQty >= 0) {
     document.getElementById("sellQty").value = event.target.value;
+    if (checkSellPrice >= 0) calculateAll("sell");
+  }
+  if (event.target.id == "buyPrice" && checkBuyPrice >= 0 && checkBuyQty >= 0) {
+    calculateAll("buy");
+  }
+  if (event.target.id == "buyQty" && checkBuyPrice > 0 && checkBuyQty > 0) {
+    calculateAll("buy");
+  }
+  if (
+    event.target.id == "sellPrice" &&
+    checkSellPrice >= 0 &&
+    checkBuyQty >= 0
+  ) {
+    calculateAll("sell");
+  }
+  if (event.target.type == "radio") {
+    if (checkBuyPrice >= 0 && checkBuyQty >= 0) calculateAll("buy");
+    if (checkSellPrice >= 0 && checkBuyQty >= 0) calculateAll("sell");
   }
 });
-
-// testing code section:
-
-// test = new objBroker();
-// test2 = new objDBSLowerRate();
-
-// updateDisplay(buyDisplayLabel, test.calculateComm(20000, 5.07));
-// updateDisplay(sellDisplayLabel, test2.calculateComm(2000, 2));
