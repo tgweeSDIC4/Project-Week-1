@@ -41,7 +41,7 @@ class objBroker {
     totalPrice = price * qty;
     if (totalPrice <= this.rateChangeLvl1) {
       brokerComm = totalPrice * this.rateStd;
-      commRate = this.rateStd;
+      commRate = this.rateStd * 100;
       if (brokerComm < this.minFee) {
         brokerComm = this.minFee;
         commRate = "Mininum";
@@ -49,10 +49,10 @@ class objBroker {
     } else {
       if (totalPrice <= this.rateChangeLvl2) {
         brokerComm = totalPrice * this.rate50K;
-        commRate = this.rate50K;
+        commRate = this.rate50K * 100;
       } else {
         brokerComm = totalPrice * this.rate100k;
-        commRate = this.rate100k;
+        commRate = this.rate100k * 100;
       }
     }
     CDPComm = totalPrice * CDPFeeRate;
@@ -78,24 +78,52 @@ class objDBSLowerRate extends objBroker {
   minFee = 10;
 }
 
-class objUserRate extends objBroker {}
+class objUserRate extends objBroker {
+  calculateComm(price, qty) {
+    let totalPrice = 0;
+    let brokerComm = 0;
+    let commRate = 0;
+    let totalComm = 0;
+    let CDPComm = 0;
+    let SGXComm = 0;
+    let GSTFee = 0;
+    let userRate = 0;
+    // convert entered value into percentage
+    userRate = document.getElementById("userEnterRate").value / 100;
+    totalPrice = price * qty;
+    brokerComm = totalPrice * userRate;
+    commRate = userRate * 100;
+    CDPComm = totalPrice * CDPFeeRate;
+    SGXComm = totalPrice * SGXFeeRate;
+    totalComm = brokerComm + CDPComm + SGXComm;
+    GSTFee = totalComm * GSTRate;
+    return {
+      totalComm: totalComm,
+      totalPrice: totalPrice,
+      commRate: commRate,
+      brokerComm: brokerComm,
+      CDPComm: CDPComm,
+      SGXComm: SGXComm,
+      GSTFee: GSTFee,
+    };
+  }
+}
 
 // instantiate the broker classes
 stdBroker = new objBroker();
 lowerRateBroker = new objDBSLowerRate();
+userRateBroker = new objUserRate();
 
 updateDisplay = (objLabel, objData) => {
   document.getElementById(objLabel.totalComm).value =
     objData.totalComm.toFixed(2);
   document.getElementById(objLabel.grossTotal).value =
     objData.totalPrice.toFixed(2);
-  // check that commRate is not "Minimum"
-  if (objData.commRate != "Mininum") {
-    objData.commRate *= 100; // convert decimal to %
+  if (objData.commRate == "Mininum") {
+    document.getElementById(objLabel.commRate).value = objData.commRate;
+  } else {
     document.getElementById(objLabel.commRate).value =
       objData.commRate.toFixed(2);
-  } else {
-    document.getElementById(objLabel.commRate).value = objData.commRate;
   }
   document.getElementById(objLabel.brokerComm).value =
     objData.brokerComm.toFixed(2);
@@ -126,6 +154,7 @@ calculateAll = (type) => {
   // below 2 options have different rates so need to check whether they are selected
   checkDBSCashUpFront = document.getElementById("DBSCashUpFront").checked;
   checkDBSShareFinance = document.getElementById("DBSShareFinance").checked;
+  checkUserEnterRate = document.getElementById("userEnterType").checked;
 
   switch (type) {
     case "buy": {
@@ -134,7 +163,11 @@ calculateAll = (type) => {
       if (checkDBSCashUpFront == true || checkDBSShareFinance == true) {
         priceCommData = lowerRateBroker.calculateComm(price, qty);
       } else {
-        priceCommData = stdBroker.calculateComm(price, qty);
+        if (checkUserEnterRate == true) {
+          priceCommData = userRateBroker.calculateComm(price, qty);
+        } else {
+          priceCommData = stdBroker.calculateComm(price, qty);
+        }
       }
       updateDisplay(buyDisplayLabel, priceCommData);
       break;
@@ -145,7 +178,11 @@ calculateAll = (type) => {
       if (checkDBSShareFinance == true) {
         priceCommData = lowerRateBroker.calculateComm(price, qty);
       } else {
-        priceCommData = stdBroker.calculateComm(price, qty);
+        if (checkUserEnterRate == true) {
+          priceCommData = userRateBroker.calculateComm(price, qty);
+        } else {
+          priceCommData = stdBroker.calculateComm(price, qty);
+        }
       }
       updateDisplay(sellDisplayLabel, priceCommData);
       break;
@@ -156,8 +193,8 @@ calculateAll = (type) => {
 // Event listener to check for radio buttons and input
 // using event bubbling aka eventlistener is attached to document not individual buttons
 document.addEventListener("change", (event) => {
-  // console.log(event.target.id);
-  // console.log(event.target.type);
+  console.log(event.target.id);
+  console.log(event.target.type);
   checkBuyPrice = document.getElementById("buyPrice").value;
   checkBuyQty = document.getElementById("buyQty").value;
   checkSellPrice = document.getElementById("sellPrice").value;
@@ -166,6 +203,7 @@ document.addEventListener("change", (event) => {
     document.getElementById("sellQty").value = event.target.value;
     if (checkSellPrice >= 0) calculateAll("sell");
   }
+
   if (event.target.id == "buyPrice" && checkBuyPrice >= 0 && checkBuyQty >= 0) {
     calculateAll("buy");
   }
@@ -179,7 +217,19 @@ document.addEventListener("change", (event) => {
   ) {
     calculateAll("sell");
   }
-  if (event.target.type == "radio") {
+
+  // calculates on any radio press except for user entered rate selection
+  if (event.target.type == "radio" && event.target.id != "userEnterType") {
+    if (checkBuyPrice >= 0 && checkBuyQty >= 0) calculateAll("buy");
+    if (checkSellPrice >= 0 && checkBuyQty >= 0) calculateAll("sell");
+  }
+
+  checkUserEnterRate = document.getElementById("userEnterRate").value;
+  if (
+    (event.target.id == "userEnterRate" ||
+      document.getElementById("userEnterType")) &&
+    checkUserEnterRate >= 0
+  ) {
     if (checkBuyPrice >= 0 && checkBuyQty >= 0) calculateAll("buy");
     if (checkSellPrice >= 0 && checkBuyQty >= 0) calculateAll("sell");
   }
