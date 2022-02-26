@@ -11,7 +11,7 @@
   display: grid;
   margin: auto;
   grid-template-columns: 200px 200px 150px 150px 200px;
-  grid-template-rows: 450px 100px;
+  grid-template-rows: 420px 100px;
   text-align: center;
   justify-content: center;
   position: relative;
@@ -46,7 +46,7 @@
 }
 #roundingNote {
   grid-area: 2 / 2 / 3 / 4;
-  color: crimson;
+  color: red;
 }
 .radioBtn {
   color: black;
@@ -111,12 +111,14 @@
   background-color: lightgray;
 }
 #totalComm {
-  background-color: lightgreen;
+  background-color: lightgray;
   position: relative;
   top: 5px;
+  text-align: center;
 }
 #grandTotal {
   background-color: lightgreen;
   position: relative;
   top: 5px;
+  text-align: center;
 }

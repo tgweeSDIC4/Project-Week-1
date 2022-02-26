@@ -102,9 +102,28 @@ updateDisplay = (objLabel, objData) => {
   document.getElementById(objLabel.CDPComm).value = objData.CDPComm.toFixed(2);
   document.getElementById(objLabel.SGXComm).value = objData.SGXComm.toFixed(2);
   document.getElementById(objLabel.GSTFee).value = objData.GSTFee.toFixed(2);
+
+  //update total commission display
+  totalComm =
+    parseFloat(document.getElementById("buyTotalComm").value) +
+    parseFloat(document.getElementById("sellTotalComm").value);
+  document.getElementById("totalComm").value = totalComm.toFixed(2);
+
+  //update profit or loss
+  profitLoss =
+    parseFloat(document.getElementById("sellTotal").value) -
+    parseFloat(document.getElementById("buyTotal").value) -
+    totalComm;
+  document.getElementById("grandTotal").value = profitLoss.toFixed(2);
+  if (profitLoss <= 0) {
+    document.getElementById("grandTotal").style.background = "red";
+  } else {
+    document.getElementById("grandTotal").style.background = "lightgreen";
+  }
 };
 
 calculateAll = (type) => {
+  // below 2 options have different rates so need to check whether they are selected
   checkDBSCashUpFront = document.getElementById("DBSCashUpFront").checked;
   checkDBSShareFinance = document.getElementById("DBSShareFinance").checked;
 
