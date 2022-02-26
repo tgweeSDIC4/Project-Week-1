@@ -193,8 +193,6 @@ calculateAll = (type) => {
 // Event listener to check for radio buttons and input
 // using event bubbling aka eventlistener is attached to document not individual buttons
 document.addEventListener("change", (event) => {
-  console.log(event.target.id);
-  console.log(event.target.type);
   checkBuyPrice = document.getElementById("buyPrice").value;
   checkBuyQty = document.getElementById("buyQty").value;
   checkSellPrice = document.getElementById("sellPrice").value;
@@ -207,7 +205,7 @@ document.addEventListener("change", (event) => {
   if (event.target.id == "buyPrice" && checkBuyPrice >= 0 && checkBuyQty >= 0) {
     calculateAll("buy");
   }
-  if (event.target.id == "buyQty" && checkBuyPrice > 0 && checkBuyQty > 0) {
+  if (event.target.id == "buyQty" && checkBuyPrice >= 0 && checkBuyQty >= 0) {
     calculateAll("buy");
   }
   if (
@@ -228,7 +226,8 @@ document.addEventListener("change", (event) => {
   if (
     (event.target.id == "userEnterRate" ||
       document.getElementById("userEnterType")) &&
-    checkUserEnterRate >= 0
+    checkUserEnterRate >= 0 &&
+    checkUserEnterRate != ""
   ) {
     if (checkBuyPrice >= 0 && checkBuyQty >= 0) calculateAll("buy");
     if (checkSellPrice >= 0 && checkBuyQty >= 0) calculateAll("sell");
