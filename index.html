@@ -16,7 +16,7 @@
   <body>
     <div class="firstGrid">
       <div class="brokers">
-        <p><br />Step 1: <br />Please Select an option</p>
+        <p><br />Please Select an option</p>
         <form class="radioBtn">
           <input
             type="radio"
@@ -57,7 +57,6 @@
       <div class="buyComm">
         <span>Buy Comm</span>
         <br><br>
-        <span> Step 2: <span>
         <span>Enter Price/Qty<span>
         <br><br>
         <form class="buyCommForm">
@@ -68,10 +67,10 @@
           <input type="text" id="buyQty" size="10" />
           <br /><br />
           <label for="buyTotalComm">Total Comm</label>
-          <input type="text" id="buyTotalComm" size="10" readonly />
+          <input type="text" id="buyTotalComm" size="8" readonly />
           <br /><br />
           <label for="buyTotal">Gross Total</label>
-          <input type="text" id="buyTotal" size="10" readonly />
+          <input type="text" id="buyTotal" size="8" readonly />
           <br /><br />
           <label for="buyCommRate">Comm Rate %</label>
           <input type="text" id="buyCommRate" size="10" readonly />
@@ -92,17 +91,17 @@
 
       <div class="sellComm">
         <span>Sell Comm</span>
-        <br /><br />
-        <span>Step 3: Enter Price<span>
+        <br /><br/>
+        <span>Enter Price<span>
         <br><br>
         <form class="sellCommForm">
           <input type="text" id="sellPrice" size="10" />
           <br /><br />
           <input type="text" id="sellQty" size="10" readonly />
           <br /><br />
-          <input type="text" id="sellTotalComm" size="10" readonly />
+          <input type="text" id="sellTotalComm" size="8" readonly />
           <br /><br />
-          <input type="text" id="sellTotal" size="10" readonly />
+          <input type="text" id="sellTotal" size="8" readonly />
           <br /><br />
           <input type="text" id="sellCommRate" size="10" readonly />
           <br /><br />
@@ -126,14 +125,31 @@
       </div>
 
       <div class="DBSFinance">
-        DBS Share Financing <br />
-        (part 2)
+        <span>DBS Share Financing <br /></span>
+        <br /><br/><br>
+        <label for="financedAmt" id=financedAmtLabel>Financed Amt</label>
+        <input type="text" id="FinancedAmt" size="8"/>
+        <br/><br>
+        <label for="interestRate" id="interestRateLabel">Interest Rate %</label>
+        <input type="text" id="interestRate" size="8"/>
+        <br/><br>
+        <label for="dailyInterest" id="dailyInterestLabel">Daily Interest</label>
+        <input type="text" id="dailyInterest" size="8">
+        <br/><br>
+        <label for="monthlyInterest" id="monthlyInterestLabel">30 Days Interest</label>
+        <input type="text" id="monthlyInterest" size="8">
+        <br/><br>
+        <label for="annualInterest" id="annualInterestLabel">Annual Interest</label>
+        <input type="text" id="annualInterest" size="8">
+        <br/><br>
+        <input type="button" id="calBtn" value="Calculate Interest">
       </div>
 
       <div id="roundingNote">
         Note: Due to Rounding errors, there 
         might be small differences with actual fees.
       </div>
+    
     </div>
   </body>
 </html>

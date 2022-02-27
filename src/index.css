@@ -27,6 +27,7 @@
   grid-area: 1 / 2 / 2/ 3;
   font-weight: bold;
   color: blue;
+  text-align: right;
 }
 .sellComm {
   grid-area: 1 / 3 / 2 / 4;
@@ -43,6 +44,7 @@
   grid-area: 1 / 5 / 2 / 6;
   color: blue;
   font-weight: bold;
+  text-align: right;
 }
 #roundingNote {
   grid-area: 2 / 2 / 3 / 4;
@@ -67,58 +69,120 @@
 }
 #buyTotalComm {
   background-color: lightgray;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
+}
+#buyPrice {
+  text-align: center;
+}
+#buyQty {
+  text-align: center;
 }
 #buyTotal {
   background-color: lightgray;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
 }
 #buyCommRate {
   background-color: lightgray;
+  text-align: center;
 }
 #buyBrokerComm {
   background-color: lightgray;
+  text-align: center;
 }
 #buyCDPFee {
   background-color: lightgray;
+  text-align: center;
 }
 #buySGXFee {
   background-color: lightgray;
+  text-align: center;
 }
 #buyGST {
   background-color: lightgray;
+  text-align: center;
+}
+#sellPrice {
+  text-align: center;
 }
 #sellQty {
   background-color: lightgray;
+  text-align: center;
 }
 #sellTotalComm {
   background-color: lightgray;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
 }
 #sellTotal {
   background-color: lightgray;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
 }
 #sellCommRate {
   background-color: lightgray;
+  text-align: center;
 }
 #sellBrokerComm {
   background-color: lightgray;
+  text-align: center;
 }
 #sellCDPFee {
   background-color: lightgray;
+  text-align: center;
 }
 #sellSGXFee {
   background-color: lightgray;
+  text-align: center;
 }
 #sellGST {
   background-color: lightgray;
+  text-align: center;
 }
 #totalComm {
   background-color: lightgray;
   position: relative;
   top: 5px;
   text-align: center;
+  font-weight: bold;
 }
 #grandTotal {
   background-color: lightgreen;
   position: relative;
   top: 5px;
   text-align: center;
+  font-weight: bolder;
+}
+#financedAmtLabel {
+  color: black;
+}
+#interestRateLabel {
+  color: black;
+}
+#dailyInterestLabel {
+  color: black;
+}
+#dailyInterest {
+  background-color: lightgray;
+}
+#monthlyInterestLabel {
+  color: black;
+}
+#monthlyInterest {
+  background-color: lightgray;
+}
+#annualInterestLabel {
+  color: black;
+}
+#annualInterest {
+  background-color: lightgray;
+}
+#calBtn {
+  font-weight: bold;
+  color: blue;
 }
