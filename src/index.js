@@ -57,8 +57,8 @@ class objBroker {
     }
     CDPComm = totalPrice * CDPFeeRate;
     SGXComm = totalPrice * SGXFeeRate;
-    totalComm = brokerComm + CDPComm + SGXComm;
-    GSTFee = totalComm * GSTRate;
+    GSTFee = (brokerComm + CDPComm + SGXComm) * GSTRate;
+    totalComm = brokerComm + CDPComm + SGXComm + GSTFee;
     return {
       totalComm: totalComm,
       totalPrice: totalPrice,
@@ -95,8 +95,8 @@ class objUserRate extends objBroker {
     commRate = userRate * 100;
     CDPComm = totalPrice * CDPFeeRate;
     SGXComm = totalPrice * SGXFeeRate;
-    totalComm = brokerComm + CDPComm + SGXComm;
-    GSTFee = totalComm * GSTRate;
+    GSTFee = (brokerComm + CDPComm + SGXComm) * GSTRate;
+    totalComm = brokerComm + CDPComm + SGXComm + GSTFee;
     return {
       totalComm: totalComm,
       totalPrice: totalPrice,
@@ -190,6 +190,16 @@ calculateAll = (type) => {
   }
 };
 
+// calculate interest and update display for DBS financing part
+calculateInterest = (amt, rate) => {
+  annualInterest = (amt * rate) / 100;
+  dailyInterest = annualInterest / 365;
+  monthlyInterest = dailyInterest * 30;
+  document.getElementById("dailyInterest").value = dailyInterest.toFixed(2);
+  document.getElementById("monthlyInterest").value = monthlyInterest.toFixed(2);
+  document.getElementById("annualInterest").value = annualInterest.toFixed(2);
+};
+
 // Event listener to check for radio buttons and input
 // using event bubbling aka eventlistener is attached to document not individual buttons
 document.addEventListener("change", (event) => {
@@ -197,17 +207,22 @@ document.addEventListener("change", (event) => {
   checkBuyQty = document.getElementById("buyQty").value;
   checkSellPrice = document.getElementById("sellPrice").value;
 
+  // if Buy quantity is changed, update Sell Quantity to be the same
+  // then calculate if sell Price is >=0
   if (event.target.id == "buyQty" && checkBuyQty >= 0) {
     document.getElementById("sellQty").value = event.target.value;
     if (checkSellPrice >= 0) calculateAll("sell");
   }
 
+  // calculates if Buy Price is changed and Quantity is >= zero
   if (event.target.id == "buyPrice" && checkBuyPrice >= 0 && checkBuyQty >= 0) {
     calculateAll("buy");
   }
+  // calculates if Quantity is changed and Buy price is >=0
   if (event.target.id == "buyQty" && checkBuyPrice >= 0 && checkBuyQty >= 0) {
     calculateAll("buy");
   }
+  // calculates if Sell Price is changed and Quantity is >=0
   if (
     event.target.id == "sellPrice" &&
     checkSellPrice >= 0 &&
@@ -222,6 +237,7 @@ document.addEventListener("change", (event) => {
     if (checkSellPrice >= 0 && checkBuyQty >= 0) calculateAll("sell");
   }
 
+  // calculates if a user rate is entered
   checkUserEnterRate = document.getElementById("userEnterRate").value;
   if (
     (event.target.id == "userEnterRate" ||
@@ -231,5 +247,14 @@ document.addEventListener("change", (event) => {
   ) {
     if (checkBuyPrice >= 0 && checkBuyQty >= 0) calculateAll("buy");
     if (checkSellPrice >= 0 && checkBuyQty >= 0) calculateAll("sell");
+  }
+});
+
+// event listener attached to DBS financing submit button
+document.getElementById("calBtn").addEventListener("click", () => {
+  checkAmt = document.getElementById("financedAmt").value;
+  checkInterestRate = document.getElementById("interestRate").value;
+  if (checkAmt >= 0 && checkInterestRate >= 0) {
+    calculateInterest(checkAmt, checkInterestRate);
   }
 });

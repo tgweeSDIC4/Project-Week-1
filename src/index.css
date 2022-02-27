@@ -10,7 +10,7 @@
 .firstGrid {
   display: grid;
   margin: auto;
-  grid-template-columns: 200px 200px 150px 150px 200px;
+  grid-template-columns: 200px 200px 150px 150px 220px;
   grid-template-rows: 420px 100px;
   text-align: center;
   justify-content: center;
@@ -158,29 +158,32 @@
   text-align: center;
   font-weight: bolder;
 }
-#financedAmtLabel {
+.DBSFinanceForm {
   color: black;
 }
-#interestRateLabel {
-  color: black;
+#financedAmt {
+  text-align: center;
 }
-#dailyInterestLabel {
-  color: black;
+#interestRate {
+  text-align: center;
 }
 #dailyInterest {
   background-color: lightgray;
-}
-#monthlyInterestLabel {
-  color: black;
+  text-align: center;
+  color: red;
+  font-weight: bold;
 }
 #monthlyInterest {
   background-color: lightgray;
-}
-#annualInterestLabel {
-  color: black;
+  text-align: center;
+  color: red;
+  font-weight: bold;
 }
 #annualInterest {
   background-color: lightgray;
+  text-align: center;
+  color: red;
+  font-weight: bold;
 }
 #calBtn {
   font-weight: bold;
