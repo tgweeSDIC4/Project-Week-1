@@ -11,7 +11,7 @@
   display: grid;
   margin: auto;
   grid-template-columns: 200px 200px 150px 150px 220px;
-  grid-template-rows: 420px 100px;
+  grid-template-rows: 420px 60px 200px;
   text-align: center;
   justify-content: center;
   position: relative;
@@ -24,7 +24,7 @@
   font-weight: bold;
 }
 .buyComm {
-  grid-area: 1 / 2 / 2/ 3;
+  grid-area: 1 / 2 / 2 / 3;
   font-weight: bold;
   color: blue;
   text-align: right;
@@ -49,6 +49,22 @@
 #roundingNote {
   grid-area: 2 / 2 / 3 / 4;
   color: red;
+}
+.brokerOne {
+  grid-area: 3 / 2 / 4 / 3;
+  text-align: right;
+  color: blue;
+  font-weight: bold;
+}
+.brokerTwo {
+  grid-area: 3 / 3 / 4 / 4;
+  color: blue;
+  font-weight: bold;
+}
+.brokerCompare {
+  grid-area: 3 / 4 / 4 / 5;
+  color: blue;
+  font-weight: bold;
 }
 .radioBtn {
   color: black;
@@ -187,5 +203,44 @@
 }
 #calBtn {
   font-weight: bold;
+  color: blue;
+}
+.brokerOneForm {
+  color: black;
+}
+#brokerOneRate {
+  text-align: center;
+}
+#brokerOneValue {
+  text-align: center;
+}
+#brokerCompareDiff {
+  font-weight: bold;
+  text-align: center;
+}
+#calBtnCompare {
+  color: blue;
+  font-weight: bold;
+}
+#brokerTwoRate {
+  text-align: center;
+}
+#brokerTwoValue {
+  background-color: lightgray;
+  text-align: center;
+}
+#brokerCompareDiff {
+  background-color: lightgray;
+  text-align: center;
+  color: blue;
+}
+#brokerOneComm {
+  background-color: lightgray;
+  text-align: center;
+  color: blue;
+}
+#brokerTwoComm {
+  background-color: lightgray;
+  text-align: center;
   color: blue;
 }

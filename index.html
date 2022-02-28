@@ -128,22 +128,22 @@
         <span>DBS Share Financing <br /></span>
         <br /><br/><br>
         <form class="DBSFinanceForm">
-        <label for="financedAmt">Financed Amt</label>
-        <input type="text" id="financedAmt" size="7"/>
-        <br/><br>
-        <label for="interestRate">Interest Rate pa %</label>
-        <input type="text" id="interestRate" size="7"/>
-        <br/><br>
-        <label for="dailyInterest">Daily Interest</label>
-        <input type="text" id="dailyInterest" size="7">
-        <br/><br>
-        <label for="monthlyInterest">30 Days Interest</label>
-        <input type="text" id="monthlyInterest" size="7">
-        <br/><br>
-        <label for="annualInterest">Annual Interest</label>
-        <input type="text" id="annualInterest" size="7">
-        <br/><br>
-        <input type="button" id="calBtn" value="Calculate Interest">
+          <label for="financedAmt">Financed Amt</label>
+          <input type="text" id="financedAmt" size="7"/>
+          <br/><br>
+          <label for="interestRate">Interest Rate pa %</label>
+          <input type="text" id="interestRate" size="7"/>
+          <br/><br>
+          <label for="dailyInterest">Daily Interest</label>
+          <input type="text" id="dailyInterest" size="7">
+          <br/><br>
+          <label for="monthlyInterest">30 Days Interest</label>
+          <input type="text" id="monthlyInterest" size="7">
+          <br/><br>
+          <label for="annualInterest">Annual Interest</label>
+          <input type="text" id="annualInterest" size="7">
+          <br/><br>
+          <input type="button" id="calBtn" value="Calculate Interest">
         </form>
       </div>
 
@@ -152,6 +152,44 @@
         might be small differences with actual fees.
       </div>
     
+      <div class="brokerOne">
+        <span>Broker One</span>
+        <br><br>
+        <form class="brokerOneForm">
+          <label for="brokerOneRate">Comm Rate %</label>
+          <input type="text" id="brokerOneRate" size="10">
+          <br><br>
+          <label for="brokerOneValue">Dollar Amount<label>
+          <input type="text"  id="brokerOneValue" size="10">
+          <br><br>
+          <label for="brokerOneComm">Comm Amount</label>
+          <input type="text" id="brokerOneComm" size="10" readonly>
+        </form>
+      </div>
+
+      <div class="brokerTwo">
+        <span>Broker two</span>
+        <br><br>
+        <form class="brokerTwoForm">
+          <input type="text" id="brokerTwoRate" size="10">
+          <br><br>
+          <input type="text"  id="brokerTwoValue" size="10" readonly>
+          <br><br>
+          <input type="text" id="brokerTwoComm" size="10" readonly>
+        </form>
+      </div>
+
+      <div class="brokerCompare">
+        <span>Comparision</span>
+        <br><br>
+        <form class="brokerCompareForm">
+          <br><br>
+          <input type="button" id="calBtnCompare" value="Calculate Fees">
+          <br><br>
+          <input type="text" id="brokerCompareDiff" size="10">
+        </form>
+      </div>
+
     </div>
   </body>
 </html>

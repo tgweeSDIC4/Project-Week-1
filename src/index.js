@@ -200,6 +200,19 @@ calculateInterest = (amt, rate) => {
   document.getElementById("annualInterest").value = annualInterest.toFixed(2);
 };
 
+//calculate commission diff and update the comparision display
+calculateCommDiff = (brokerOneRate, brokerOneValue, brokerTwoRate) => {
+  brokerOneComm = (brokerOneRate / 100) * brokerOneValue;
+  brokerTwoComm = (brokerTwoRate / 100) * brokerOneValue;
+  commDiff = brokerTwoComm - brokerOneComm;
+  document.getElementById("brokerCompareDiff").value = commDiff.toFixed(2);
+  document.getElementById("brokerOneComm").value = brokerOneComm.toFixed(2);
+  document.getElementById("brokerTwoComm").value = brokerTwoComm.toFixed(2);
+  if (commDiff > 0)
+    document.getElementById("brokerCompareDiff").style.color = "red";
+  else document.getElementById("brokerCompareDiff").style.color = "blue";
+};
+
 // Event listener to check for radio buttons and input
 // using event bubbling aka eventlistener is attached to document not individual buttons
 document.addEventListener("change", (event) => {
@@ -250,11 +263,22 @@ document.addEventListener("change", (event) => {
   }
 });
 
-// event listener attached to DBS financing submit button
+// event listener attached to DBS financing Calculate Interest button
 document.getElementById("calBtn").addEventListener("click", () => {
   checkAmt = document.getElementById("financedAmt").value;
   checkInterestRate = document.getElementById("interestRate").value;
   if (checkAmt >= 0 && checkInterestRate >= 0) {
     calculateInterest(checkAmt, checkInterestRate);
+  }
+});
+
+//event listner attached for Broker Comparision Calculate Button
+document.getElementById("calBtnCompare").addEventListener("click", () => {
+  brokerOneRate = document.getElementById("brokerOneRate").value;
+  brokerTwoRate = document.getElementById("brokerTwoRate").value;
+  brokerOneValue = document.getElementById("brokerOneValue").value;
+  if (brokerOneRate > 0 && brokerOneValue >= 0 && brokerTwoRate >= 0) {
+    document.getElementById("brokerTwoValue").value = brokerOneValue;
+    calculateCommDiff(brokerOneRate, brokerOneValue, brokerTwoRate);
   }
 });
