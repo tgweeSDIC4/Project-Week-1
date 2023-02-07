@@ -1,6 +1,7 @@
 const CDPFeeRate = 0.000325; // 0.0325%
 const SGXFeeRate = 0.000075; // 0.0075%
-const GSTRate = 0.07; // 7%
+const GSTRate = 0.08; // 7%
+const SIFee = 0.35; // cents
 
 const buyDisplayLabel = {
   totalComm: "buyTotalComm",
@@ -25,7 +26,7 @@ const sellDisplayLabel = {
 class objBroker {
   rateStd = 0.0028; //.28% if transaction value 50k and below
   rate50K = 0.0022; //.22% if transaction value above 50k
-  rate100k = 0.0018; //.18% if transaction value above 50k
+  rate100k = 0.0018; //.18% if transaction value above 100k
   minFee = 25; // min fee of $25
   rateChangeLvl1 = 50000; //set first threshold at which comm rate changes
   rateChangeLvl2 = 100000; // set 2nd threshold at which comm rate changes
@@ -57,8 +58,8 @@ class objBroker {
     }
     CDPComm = totalPrice * CDPFeeRate;
     SGXComm = totalPrice * SGXFeeRate;
-    GSTFee = (brokerComm + CDPComm + SGXComm) * GSTRate;
-    totalComm = brokerComm + CDPComm + SGXComm + GSTFee;
+    GSTFee = (brokerComm + CDPComm + SGXComm + SIFee) * GSTRate;
+    totalComm = brokerComm + CDPComm + SGXComm + SIFee + GSTFee;
     return {
       totalComm: totalComm,
       totalPrice: totalPrice,
@@ -95,8 +96,8 @@ class objUserRate extends objBroker {
     commRate = userRate * 100;
     CDPComm = totalPrice * CDPFeeRate;
     SGXComm = totalPrice * SGXFeeRate;
-    GSTFee = (brokerComm + CDPComm + SGXComm) * GSTRate;
-    totalComm = brokerComm + CDPComm + SGXComm + GSTFee;
+    GSTFee = (brokerComm + CDPComm + SGXComm + SIFee) * GSTRate;
+    totalComm = brokerComm + CDPComm + SGXComm + SIFee + GSTFee;
     return {
       totalComm: totalComm,
       totalPrice: totalPrice,

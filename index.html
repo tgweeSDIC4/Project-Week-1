@@ -84,6 +84,9 @@
           <label for="buySGXFee">SGX Fee</label>
           <input type="text" id="buySGXFee" size="10" readonly />
           <br /><br />
+          <label for="SIFee">SGX SI Fee</label>
+          <input type="text" id="SIFee" size="10" readonly value="0.35"/>
+          <br /><br />
           <label for="buyGST">GST</label>
           <input type="text" id="buyGST" size="10" readonly />
         </form>
@@ -110,6 +113,8 @@
           <input type="text" id="sellCDPFee" size="10" readonly />
           <br /><br />
           <input type="text" id="sellSGXFee" size="10" readonly />
+          <br /><br />
+          <input type="text" id="SIFee" size="10" readonly value="0.35" />
           <br /><br />
           <input type="text" id="sellGST" size="10" readonly />
         </form>
@@ -147,12 +152,8 @@
         </form>
       </div>
 
-      <div id="roundingNote">
-        Note: Due to Rounding errors, there 
-        might be small differences with actual fees.
-      </div>
-    
       <div class="brokerOne">
+        <br/>
         <span>Broker One</span>
         <br><br>
         <form class="brokerOneForm">
@@ -168,6 +169,7 @@
       </div>
 
       <div class="brokerTwo">
+        <br/>
         <span>Broker two</span>
         <br><br>
         <form class="brokerTwoForm">
@@ -180,6 +182,7 @@
       </div>
 
       <div class="brokerCompare">
+        <br/>
         <span>Comparision</span>
         <br><br>
         <form class="brokerCompareForm">
