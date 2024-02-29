@@ -1,6 +1,6 @@
 const CDPFeeRate = 0.000325; // 0.0325%
 const SGXFeeRate = 0.000075; // 0.0075%
-const GSTRate = 0.08; // 7%
+const GSTRate = 0.09; // 9%
 const SIFee = 0.35; // cents
 
 const buyDisplayLabel = {
